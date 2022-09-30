@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LotGD Color Picker</title>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=roboto:400,400i" rel="stylesheet" />
+
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .height-750 {
+            height: 750px;
+        }
+
+        .bg-powder {
+            background-color: powderblue;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container p-2 height-750 bg-powder position-absolute top-50 start-50 translate-middle">
+    <div class="row">
+        <h1 class="text-center">LotGD Color Generator</h1>
+        <p class="text-center">Enter the text you wish to color, select a starting and end color, then hit the button to get your formatted text.</p>
+        <p class="text-center">NOTE: The steps can only be smaller or equals to the length of the input text.</p>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <label class="form-label">Amount of characters:</label> <span id="characterAmountDisplay" class="fw-bold">0</span>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="textInput" placeholder="">
+                <label for="textInput">Text to color</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3">
+            <label for="startColor" class="form-label">Start Color</label>
+            <input type="color" class="form-control form-control-color" id="startColor" value="#000000" title="Choose your start color">
+        </div>
+        <div class="col">
+            <!-- I'm empty inside :) -->
+        </div>
+        <div class="col-3">
+            <label for="endColor" class="form-label">End Color</label>
+            <input type="color" class="form-control form-control-color" id="endColor" value="#000000" title="Choose your end color">
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col">
+            <label for="colorSteps" class="form-label">Amount of steps:</label> <span id="colorStepValueDisplay" class="fw-bold">0</span>
+            <input type="range" class="form-range" min="1" max="128" step="1" id="colorSteps">
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col"></div>
+        <div class="col-6">
+            <button type="button" class="btn btn-success w-100" onclick="colorize();">Generate</button>
+        </div>
+        <div class="col"></div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col">
+            <h4 class="text-center">Output:</h4>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col">
+            <p id="textOutput" class="text-center">[Hit "Generate" to get your output]</p>
+        </div>
+    </div>
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.bundle.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="lotgd-color-generator.js"></script>
+
+<script type="text/javascript">
+    $(function() {
+        const colorStepper = $('#colorSteps');
+        const colorStepperDisplay = $('#colorStepValueDisplay');
+        const textInput = $('#textInput');
+        const textCharDisplay = $('#characterAmountDisplay');
+
+        colorStepperDisplay.text(colorStepper.val().toString());
+        textCharDisplay.text(textInput.val().length);
+
+        colorStepper.on('input change', function() {
+            colorStepperDisplay.text(colorStepper.val().toString());
+        });
+
+        textInput.on('input change', function() {
+            textCharDisplay.text(textInput.val().length);
+        });
+    });
+</script>
+
+</body>
+</html>

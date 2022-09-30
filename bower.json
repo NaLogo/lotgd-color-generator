@@ -1,0 +1,22 @@
+{
+  "name": "lotgd-color-creator",
+  "main": "lotgd-color-creator.js",
+  "homepage": "https://github.com/lugotal/lotgd-color-creator",
+  "description": "Lets you generate color transitions in a format compatible with the browser game on lotgd.de",
+  "authors": [
+    "Lugotal"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^5.2.1",
+    "jquery": "^3.6.1"
+  }
+}
